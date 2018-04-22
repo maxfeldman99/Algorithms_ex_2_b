@@ -156,24 +156,28 @@ void printBestGroups(Node *arr, Node *limitsArray, int dogsNum, int dogSitterNum
 	int j = 0;
 	int sumFinal = 0;
 	int sum = 0;
+	if (dogSitterNum > 1) {
+		for (int i = 1; i < dogSitterNum; i++) {
 
-	for (int i = 1; i < dogSitterNum; i++) {
-
-		sum = arr[limitsArray[i].data - 2].data - arr[j].data;
-		sumFinal = sumFinal + sum;
-		int k = arr[limitsArray[i].data - 1].data;
-
-		j = limitsArray[i].data - 1;
-
-		if (i + 1 == dogSitterNum) {
-
-			sum = 0;
-			sum = arr[dogsNum - 1].data - k;
+			sum = arr[limitsArray[i].data - 2].data - arr[j].data;
 			sumFinal = sumFinal + sum;
+			int k = arr[limitsArray[i].data - 1].data;
+
+			j = limitsArray[i].data - 1;
+
+			if (i + 1 == dogSitterNum) {
+
+				sum = 0;
+				sum = arr[dogsNum - 1].data - k;
+				sumFinal = sumFinal + sum;
+			}
 		}
+
+		cout << "SUM IS  : " << sumFinal << endl;
 	}
-	
-	cout << "SUM IS  : " << sumFinal << endl;
+	else {
+		cout << "SUM IS  : " << arr[dogsNum-1].data - arr[0].data << endl;
+	}
 }
 
 
